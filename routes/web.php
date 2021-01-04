@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','role:admin'])->group
 	Route::get('dashboard',[DashboardController::class,'home'])->name('dashboard');
 	Route::resource('posts',PostController::class);
 });
+
+
+Route::post('/newsletter-subscriptions',[SubscriptionController::class,'store']);
 
 require __DIR__.'/auth.php';
